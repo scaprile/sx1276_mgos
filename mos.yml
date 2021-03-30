@@ -1,0 +1,30 @@
+author: Sergio R. Caprile
+description: Library for SX1276
+type: lib
+version: 1.0
+
+tags:
+  - c
+  - hw
+
+sources:
+  - src
+  - third-party/semtech/src
+
+includes:
+  - include
+  - third-party/semtech/include
+
+config_schema:
+  - ["spi.enable", true]
+  # pins used in your connection to the SX1276
+  - ["sx1276.reset_gpio", "i", 26, {title: "GPIO to use for SX1276 reset"}]
+  - ["sx1276.dio0_gpio", "i", 36, {title: "GPIO to use for SX1276 DIO0"}]
+  # choose a CS index and assign it to the pin where you connected NSS
+  - ["spi.cs1_gpio", "i", 5, {title: "GPIO to use for SPI CS1, connected to NSS"}]
+  - ["sx1276.cs_index", "i", 1, {title: "spi.cs*_gpio index, 0, 1 or 2"}]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/spi
+
+manifest_version: 2017-05-18
